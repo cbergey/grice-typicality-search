@@ -1,0 +1,103 @@
+<html>
+  <head>
+    <title>Looking for objects</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script> 
+    <script src="https://d3js.org/d3.v5.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <script src="spriteData.js"></script>
+    <!-- Include library [mmturkey][mmturkey], which manages submitting data to Mechanical Turk. This defines a global object, <code>turk</code>, and attaches five properties to it, <code>hitId</code>, <code>assignmentId</code>, <code>workerId</code>, <code>previewMode</code>, and <code>turkSubmitTo</code>. It also provides a single method, <code>submit(data)</code>, which you use to submit data to Turk. If no submission URL has been provided (because, e.g. you're testing your code outside of the Turk environment), <code>submit</code> displays what would have been submitted (without, obviously, any Turk-specific variables like <code>workerId</code> and <code>assignmentId</code>).  -->
+    <!-- [mmturkey]: http://github.com/longouyang/mmturkey -->
+    <script src="mmturkey-0.6.js"></script>
+    <link rel="stylesheet" href="stylecentered.css" />
+    <meta name="viewport" content="initial-scale=1.0" /> 
+     <!--<meta name="viewport" content="width=device-width">  -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+  </head>
+  <body>
+  
+    <div class="slide" id="instructions">
+
+        <p class="block-text">
+          subject ID: <br>
+          <input type="text" id="subjectID" name="subjectID" size="30"> 
+        </p>
+
+        <p class="block-text">
+          list number: <br>
+          <input type="text" id="order" name="order" size="30"> 
+        </p>
+
+        <button type="button" id="beforeStudy" onClick="this.blur(); experiment.checkInput()">Start</button>
+
+        <div id="checkMessage"> </div> <!--dynamically built in javascript-->
+    </div>
+ 
+  <div class="slide" id="trainingstage">
+      <div id="instructions"> </div>
+      <div id="selector" class = "border"></div>
+      <div id="target"> 
+        <div id="square1" class = "square"></div>
+        <div id="square2" class = "square"></div>
+        <div id="square3" class = "square"></div>
+        <div id="square4" class = "square"></div>
+        <div id="square5" class = "square"></div>
+      </div>
+      <div id="distractor1"> 
+        <div id="square1" class = "square"></div>
+        <div id="square2" class = "square"></div>
+        <div id="square3" class = "square"></div>
+        <div id="square4" class = "square"></div>
+        <div id="square5" class = "square"></div>
+      </div>
+      <div id="distractor2"> 
+        <div id="square1" class = "square"></div>
+        <div id="square2" class = "square"></div>
+        <div id="square3" class = "square"></div>
+        <div id="square4" class = "square"></div>
+        <div id="square5" class = "square"></div>
+      </div>
+      <div id="distractor3"> 
+        <div id="square1" class = "square"></div>
+        <div id="square2" class = "square"></div>
+        <div id="square3" class = "square"></div>
+        <div id="square4" class = "square"></div>
+        <div id="square5" class = "square"></div>
+      </div>
+      <div id="distractor4"> 
+        <div id="square1" class = "square"></div>
+        <div id="square2" class = "square"></div>
+        <div id="square3" class = "square"></div>
+        <div id="square4" class = "square"></div>
+        <div id="square5" class = "square"></div>
+      </div>
+      <center><button type="button" id="totestbutton">Next</button></center>
+  </div>
+
+
+  <div class="slide" id="testingstage">
+      <div id="instructions"> </div>
+      <div id="labelInst"> </div>
+      <input id="slider1" type="range" min="0" max="100" step="1" left="200" onchange="updateText(this.value)"/>
+      <div id="sliderlabel"> </div>
+      <center><button type="button" id="nexttrialbutton">Next</button></center>
+  </div>
+
+
+  <div class="slide" id="prestudy">
+        <br><br><br><br>
+        <p class="block-text"> In this task, you will see arrays of shapes and be asked to find one of them. You will only be able to advance to the next slide once you've picked the right shape. </p> 
+        <p class="block-text"> You will then be asked to make judgments about what these kinds of shapes are usually like. When you are ready, click the button below to begin.</p>
+        <center><button type="button" onClick="this.blur(); experiment.preStudy()">Begin</button></center>
+  </div>
+
+
+
+
+  <div class="slide" id="finished">
+  </div>
+
+    
+  <script src="tabletcentered.js"></script>
+    
+  </body>
+</html>
